@@ -34,29 +34,31 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              onClick={toggleDropdown}
-            >
-              Customers
-            </a>
+          <ul className="navbar-nav">
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                onClick={toggleDropdown}
+              >
+                Customers
+              </a>
 
-            <ul className={`dropdown-menu${isDropdownOpen ? " show" : ""}`}>
-              <li>
-                <Link href="/customers/add" className="dropdown-item">
-                  New
-                </Link>
-              </li>
-              <li>
-                <Link href="/customers" className="dropdown-item">
-                  View All
-                </Link>
-              </li>
-            </ul>
-          </li>
+              <ul className={`dropdown-menu${isDropdownOpen ? " show" : ""}`}>
+                <li>
+                  <Link href="/customers/add" className="dropdown-item">
+                    New
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/customers" className="dropdown-item">
+                    View All
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
           <div
             className={`collapse navbar-collapse ${expanded ? "show" : ""}`}
             id="navbarSupportedContent"
