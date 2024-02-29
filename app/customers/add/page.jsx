@@ -9,8 +9,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 const schema = yup
   .object({
-    name: yup.string().min(5, "name should be at least 5 characters"),
-    email: yup.string().email("Invalid email address"),
+    name: yup
+      .string()
+      .min(5, "name should be at least 5 characters")
+      .required(),
+    email: yup.string().email("Invalid email address").required(),
+    location: yup.string().required(),
+    phone: yup.string().required(),
   })
   .required();
 
@@ -56,7 +61,30 @@ function AddCustomer() {
     event.preventDefault();
     postCustomer(data);
   };
-
+  const errorValidation = (data) => {
+    if (data.customerId === "") {
+      error.push("Choose a Customer");
+      setTimeout(() => {
+        setError([]);
+      }, 3000);
+      return true;
+    }
+    if (data.date === "") {
+      error.push("Choose a date");
+      setTimeout(() => {
+        setError([]);
+      }, 2000);
+      return true;
+    }
+    if (data.description === "") {
+      error.push("Add description");
+      setTimeout(() => {
+        setError([]);
+      }, 3000);
+      return true;
+    }
+    return false;
+  };
   return (
     <>
       <Banner title="New Customer" />
@@ -97,6 +125,7 @@ function AddCustomer() {
                 id="phone"
                 {...register("phone")}
               />
+              <p>{errors.phone?.message}</p>
             </div>
             <div className="mb-3">
               <label htmlFor="location" className="form-label">
@@ -108,6 +137,7 @@ function AddCustomer() {
                 id="location"
                 {...register("location")}
               />
+              <p>{errors.location?.message}</p>
             </div>
             {success && (
               <div className="alert alert-success" role="alert">
