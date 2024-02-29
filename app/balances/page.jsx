@@ -16,7 +16,7 @@ const AllBalance = () => {
       label: "Edit",
       content: (item) => (
         <Link href={`/balances/edit/${item._id}`}>
-          <button className="btn btn-secondary"> edit</button>
+          <button className="btn btn-primary"> edit</button>
         </Link>
       ),
     },
