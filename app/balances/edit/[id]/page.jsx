@@ -51,9 +51,12 @@ function EditBalance({ params }) {
       .finally(() => {
         setSubmitted(false);
         setTimeout(() => {
+          localStorage.removeItem("balances");
           setSuccess(false);
         }, 3000);
       });
+      localStorage.removeItem("balances");
+
   };
 
   const onSubmit = (data, event) => {

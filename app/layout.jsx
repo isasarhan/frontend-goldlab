@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
 import Navbar from "@/components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Suspense } from "react";
+import "./globals.css";
 import Loading from "./loading";
 import Footer from "@/components/footer";
 const inter = Inter({ subsets: ["latin"] });

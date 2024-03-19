@@ -4,7 +4,6 @@ import Table from "@/components/table";
 import { getBalances } from "@/services/balanceServices";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { IoMdRefresh } from "react-icons/io";
 
 const AllBalance = () => {
   const columns = [
@@ -27,11 +26,23 @@ const AllBalance = () => {
     },
   ];
   const [balances, setBalances] = useState([]);
+  const [totalCash, setTotalCash] = useState(0);
+  const [totalWeight, setTotalWeight] = useState(0);
 
   const retreiveBalances = async () => {
     const result = (await getBalances()).data;
     setBalances(result);
     localStorage.setItem("balances", JSON.stringify(result));
+  };
+  const handleTotalBalances = () => {
+    let cash = 0;
+    let weight = 0;
+    balances.map((balance) => {
+      cash = cash + balance.cash;
+      weight = weight + balance.gold;
+    });
+    setTotalCash(cash);
+    setTotalWeight(weight);
   };
   useEffect(() => {
     const cachedBalances = localStorage.getItem("balances");
@@ -39,24 +50,32 @@ const AllBalance = () => {
       retreiveBalances();
     } else setBalances(JSON.parse(cachedBalances));
   }, []);
+
   const handleRefresh = () => {
-    setBalances([]);
-    localStorage.removeItem("balances");
-    retreiveBalances();
+    // setBalances([]);
+    // localStorage.removeItem("balances");
+    // retreiveBalances();
+    handleTotalBalances();
   };
   return (
     <>
       <Banner title="Balances" />
       <div className="container-md">
         <div className="wrapper m-3">
-          <div className="d-flex justify-content-between">
-            <div></div>
-            <button
-              className="btn btn-square btn-primary"
-              onClick={handleRefresh}
-            >
-              {<IoMdRefresh />}
-            </button>
+          <div className="row">
+            <div className="col">
+              <h3>Total</h3>
+            </div>
+            <div className="col">weight: {totalWeight}</div>
+            <div className="col">cash: {totalCash}</div>
+            <div className="col">
+              <button
+                className="btn btn-square btn-primary"
+                onClick={handleRefresh}
+              >
+                Calculate Total
+              </button>
+            </div>
           </div>
         </div>
         <Table columns={columns} data={balances} />

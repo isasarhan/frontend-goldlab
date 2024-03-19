@@ -60,31 +60,11 @@ function AddCustomer() {
   const onSubmit = (data, event) => {
     event.preventDefault();
     postCustomer(data);
+    localStorage.removeItem("customers");
+    localStorage.removeItem("balances");
+
   };
-  const errorValidation = (data) => {
-    if (data.customerId === "") {
-      error.push("Choose a Customer");
-      setTimeout(() => {
-        setError([]);
-      }, 3000);
-      return true;
-    }
-    if (data.date === "") {
-      error.push("Choose a date");
-      setTimeout(() => {
-        setError([]);
-      }, 2000);
-      return true;
-    }
-    if (data.description === "") {
-      error.push("Add description");
-      setTimeout(() => {
-        setError([]);
-      }, 3000);
-      return true;
-    }
-    return false;
-  };
+  
   return (
     <>
       <Banner title="New Customer" />
@@ -95,7 +75,7 @@ function AddCustomer() {
               <label htmlFor="name" className="form-label">
                 Name
               </label>
-              <input
+              <input 
                 type="text"
                 className="form-control"
                 id="name"

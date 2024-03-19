@@ -86,11 +86,9 @@ const AllPayments = () => {
                 />
               </div>
               <div className="col">
-                {" "}
                 <DateField label="From" name="startDate" register={register} />
               </div>
               <div className="col ">
-                {" "}
                 <DateField label="To" name="endDate" register={register} />
               </div>
               <div className="col d-flex justify-content-center">

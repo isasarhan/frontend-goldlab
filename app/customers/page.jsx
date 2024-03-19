@@ -17,15 +17,17 @@ const Customers = () => {
     const res = await getCustomers();
     localStorage.setItem("customers", JSON.stringify(res));
     setCustomers(res);
-    initilalizeTable((res))
- };
+    initilalizeTable(res);
+  };
 
   useEffect(() => {
     const cachedData = localStorage.getItem("customers");
     if (cachedData) {
-      const parsed = JSON.parse(cachedData)
-      initilalizeTable(parsed)
-    } else retrieveData();
+      const parsed = JSON.parse(cachedData);
+      initilalizeTable(parsed);
+    } else {
+      retrieveData();
+    }
   }, [page, pageSize]);
 
   const initilalizeTable = (data) => {
@@ -35,11 +37,12 @@ const Customers = () => {
   };
   const handlePageChange = (page) => {
     setPage(page);
-    initilalizeTable(customers)
+    initilalizeTable(customers);
   };
   const handleRefresh = () => {
-    setCustomers([])
+    setCustomers([]);
     localStorage.removeItem("customers");
+    localStorage.removeItem("balances");
     retrieveData();
   };
   return (
@@ -69,12 +72,14 @@ const Customers = () => {
                 />
               </div>
             ))}
-            <Pagination
-              currentPage={page}
-              itemsCount={customers.length}
-              onPageChange={handlePageChange}
-              pageSize={pageSize}
-            />
+            {customers && (
+              <Pagination
+                currentPage={page}
+                itemsCount={customers.length}
+                onPageChange={handlePageChange}
+                pageSize={pageSize}
+              />
+            )}
           </div>
         </div>
       </div>

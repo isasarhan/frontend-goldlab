@@ -22,6 +22,7 @@ export const getBalance = async (id) => {
 export const updateBalance = async(id, balance)=>{
     const url = `https://gold-lab-backend.onrender.com/api/balances/${id}`;
     var res;
+    
     try {
       res = await axios
       .put(url, balance)

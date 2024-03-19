@@ -1,14 +1,35 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FaRegUserCircle } from "react-icons/fa";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [id, setId] = useState();
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const getUser = () => {
+    const user = JSON.parse(Cookies.get("currentUser")).data;
+    setId(user.id);
+  };
+  const logout = () => {
+    setIsLoggedIn(false)
+    Cookies.remove("currentUser");
+    router.refresh();
+  };
+  useEffect(() => {
+    const user = Cookies.get("currentUser")
+    if(user) setIsLoggedIn(true) 
+  }, [id, isLoggedIn]);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary p-3">
@@ -27,7 +48,7 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <ul className="navbar-nav">
+          <ul className="navbar-nav ">
             <li className="nav-item">
               <Link href="/" className="nav-link active">
                 Home
@@ -91,10 +112,25 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-
-          <button className="btn btn-outline-success" type="button">
-            Refresh
+          <Link href={`/users/${id}`} className="nav-link active p-2">
+            <FaRegUserCircle onClick={getUser} size="25px" />
+          </Link>
+          <button className="btn btn-dark  m-2">
+            <Link href="/auth/register" className="nav-link ">
+              Register
+            </Link>
           </button>
+          {
+            isLoggedIn?<button className="btn btn-danger  m-2" onClick={logout}>
+            Logout
+          </button>:
+          
+          <button className="btn btn-success  m-2" >
+            <Link href="/auth/login" className="nav-link ">
+            Sign In</Link>
+          </button>
+          }
+          
         </div>
       </nav>
     </div>

@@ -2,3 +2,8 @@
 .custom-cursor:hover {
     cursor: pointer; 
   }
+
+  .btn-primary {
+    background-color: #26547C;
+    border-color: #26547C;
+}

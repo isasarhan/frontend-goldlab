@@ -45,6 +45,7 @@ function FormExample({ params }) {
       .then((res) => {
         setSuccess(true);
         console.log(res);
+        localStorage.removeItem("customers")
       })
       .catch(function (error) {
         console.log(error);
@@ -54,11 +55,13 @@ function FormExample({ params }) {
           setSuccess(false);
         }, 3000);
       });
+
   };
 
   const onSubmit = (data, event) => {
     event.preventDefault();
     postCustomers(data);
+    localStorage.removeItem("balances");
   };
   useEffect(() => {
     retrieveCustomer();
