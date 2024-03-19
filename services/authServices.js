@@ -22,7 +22,7 @@ axios.interceptors.response.use(null, error => {
 
 export const registerUser = async (file) => {
   try {
-    const res = await axios.post("http://localhost:4000/api/auth/register", file, {
+    const res = await axios.post("https://gold-lab-backend.onrender.com/api/auth/", file, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -36,7 +36,7 @@ export const registerUser = async (file) => {
 
 export const loadImage = async (imageUrl) => {
   return await axios
-    .get(`http://localhost:4000/uploads/${imageUrl}`, { responseType: "blob" })
+    .get(`https://gold-lab-backend.onrender.com/uploads/${imageUrl}`, { responseType: "blob" })
     .then((response) => {
       const objectURL = URL.createObjectURL(response.data);
       return objectURL;
@@ -47,6 +47,6 @@ export const loadImage = async (imageUrl) => {
 };
 
 export const loginUser = async (user) => {
-  let res = await axios.post("http://localhost:4000/api/auth/login", user)
+  let res = await axios.post("https://gold-lab-backend.onrender.com/api/auth/login", user)
     return res
 };
