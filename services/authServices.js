@@ -21,17 +21,14 @@ axios.interceptors.response.use(null, error => {
 });
 
 export const registerUser = async (file) => {
-  try {
-    const res = await axios.post("https://gold-lab-backend.onrender.com/api/auth/", file, {
+  
+    const res = await axios.post("https://gold-lab-backend.onrender.com/api/auth/register", file, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
     return res.data;
-  } catch (error) {
-    console.log(error);
-    return error
-  }
+  
 };
 
 export const loadImage = async (imageUrl) => {

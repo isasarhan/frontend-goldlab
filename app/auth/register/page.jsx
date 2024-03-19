@@ -41,7 +41,7 @@ const Register = () => {
       setSuccess(true)
       setTimeout(() => {
         setSuccess(false);
-        // router.push("/");
+        router.push("/");
       }, 2000);
     }).catch((error)=>{
       console.log("hi");
