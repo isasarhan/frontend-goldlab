@@ -84,7 +84,7 @@ const Invoices = () => {
         <div className="wrapper p-4">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row mb-2 align-items-end justify-content-between ">
-              <div className="col">
+              <div className="col-md-3">
                 <SelectField
                   name="customerId"
                   label="Customers"
@@ -92,8 +92,8 @@ const Invoices = () => {
                   register={register}
                 />
               </div>
-              <div className="col"></div>
-              <div className="col d-flex justify-content-center">
+              <div className="col-md-4 m-2 "></div>
+              <div className="col-md-4 d-flex justify-content-center">
                 <button className="btn btn-primary" type="submit">
                   View Invoices
                 </button>

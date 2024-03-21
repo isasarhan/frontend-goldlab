@@ -55,16 +55,18 @@ const Register = () => {
   return (
     <>
       <Banner title="Register" />
+      <div className="container-md">
       {success && (
             <div className="alert alert-success " role="alert">
               Logged In Successfuly!
             </div>
           )}
-      <div className="container-md">
         <div className="wrapper p-4">
           <div className="row">
             <div className="col"></div>
             <div className="col-md-6">
+            <div className="card p-md-5 p-3">
+
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <InputField
@@ -119,6 +121,7 @@ const Register = () => {
                   </button>
                 </div>
               </form>
+            </div>
             </div>
             <div className="col"></div>
           </div>

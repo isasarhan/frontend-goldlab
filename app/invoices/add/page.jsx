@@ -177,13 +177,13 @@ const Orders = () => {
     <>
       <Banner title="New Invoice" />
 
-      <div className="container-md  p-4">
+      <div className="container-md p-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row mb-2">
             <div className="col"></div>
             <div className="col"></div>
 
-            <div className="col">
+            <div className="col-md-4">
               <SelectField
                 name="customerId"
                 label="Customers"
@@ -204,7 +204,7 @@ const Orders = () => {
             </div>
           )}
           <div className="row mb-2">
-            <div className="col">
+            <div className="col-md-4">
               <InputField
                 type="text"
                 name="type"
@@ -213,10 +213,10 @@ const Orders = () => {
                 register={register}
               />
             </div>
-            <div className="col ">
+            <div className="col-md-4 ">
               <DateField label="Date" name="date" register={register} />
             </div>
-            <div className="col ">
+            <div className="col-md-4 ">
               <label className="form-label">Karat</label>
               <select className="form-select" {...register("karat")}>
                 <option value="750">18 K</option>
@@ -225,7 +225,7 @@ const Orders = () => {
             </div>
           </div>
           <div className="row mb-2">
-            <div className="col">
+            <div className="col-md-4">
               <InputField
                 type="text"
                 name="weight"
@@ -235,7 +235,7 @@ const Orders = () => {
               />
               <p>{errors.weight?.message}</p>
             </div>
-            <div className="col">
+            <div className="col-md-4">
               <InputField
                 type="text"
                 name="perGram"
@@ -245,7 +245,7 @@ const Orders = () => {
               />
               <p>{errors.perGram?.message}</p>
             </div>
-            <div className="col">
+            <div className="col-md-4">
               <InputField
                 type="text"
                 name="perItem"
@@ -268,18 +268,18 @@ const Orders = () => {
             </div>
           </div>
 
-          <div className="d-flex justify-content-between ">
-            <button type="submit" className="btn btn-primary ">
+          <div className="row justify-content-between m-3">
+            <button type="submit" className="col-md-1 btn btn-primary ">
               ADD
             </button>
-            <div className="">
-              <button type="button" className="btn btn-warning mr-2">
+            <div className="col-md-4">
+              <button type="button" className="col-md-5 btn btn-warning m-1">
                 Discard Invoice
               </button>
               <button
                 type="button"
                 onClick={saveOrders}
-                className="btn btn-success "
+                className="col-md-5 btn btn-success "
               >
                 Save Invoice
               </button>

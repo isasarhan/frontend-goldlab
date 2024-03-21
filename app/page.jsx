@@ -10,10 +10,10 @@ export default async function Home() {
       <Banner title="Home" />
       <div className="container text-center">
         <div className="row">
-          <div className="col">
+          <div className="col-md-6">
             <BarsDataset />
           </div>
-          <div className="col">
+          <div className="col-md-6">
             <BasicLineChart />
           </div>
         </div>

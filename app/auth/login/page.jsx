@@ -73,6 +73,7 @@ const Login = () => {
           <div className="row">
             <div className="col"></div>
             <div className="col-md-6">
+              <div className="card p-md-5 p-3 ">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <InputField
                   type="text"
@@ -99,6 +100,7 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+              </div>
             </div>
             <div className="col"></div>
           </div>

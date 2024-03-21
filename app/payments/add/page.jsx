@@ -162,7 +162,7 @@ const PaymentPage = () => {
             <div className="col"></div>
             <div className="col"></div>
 
-            <div className="col">
+            <div className="col-md-4">
               <SelectField
                 name="customerId"
                 label="Customers"
@@ -183,7 +183,7 @@ const PaymentPage = () => {
             </div>
           )}
           <div className="row mb-2">
-            <div className="col">
+            <div className="col-md-4">
               <InputField
                 type="text"
                 name="weight"
@@ -193,7 +193,7 @@ const PaymentPage = () => {
               />
               <p>{errors.weight?.message}</p>
             </div> 
-            <div className="col ">
+            <div className="col-md-4 ">
               <InputField
                 type="text"
                 name="karat"
@@ -203,12 +203,12 @@ const PaymentPage = () => {
               />
               <p>{errors.karat?.message}</p>
             </div>
-            <div className="col ">
+            <div className="col-md-4 ">
               <DateField label="Date" name="date" register={register} />
             </div>
           </div>
           <div className="row mb-2">
-            <div className="col">
+            <div className="col-md-4">
               <InputField
                 type="text"
                 name="cash"
@@ -218,7 +218,7 @@ const PaymentPage = () => {
               />
               <p>{errors.cash?.message}</p>
             </div>
-            <div className="col">
+            <div className="col-md-4">
               <label className="form-label">Currency</label>
               <select className="form-select" {...register("currency")}>
                 <option value="$">$</option>
@@ -226,7 +226,7 @@ const PaymentPage = () => {
               </select>
               <p>{errors.perGram?.message}</p>
             </div>
-            <div className="col">
+            <div className="col-md-4">
               <InputField
                 type="text"
                 name="description"
@@ -238,18 +238,18 @@ const PaymentPage = () => {
             </div>
           </div>
 
-          <div className="d-flex justify-content-between ">
-            <button type="submit" className="btn btn-primary ">
+          <div className="row justify-content-between ">
+            <button type="submit" className="col-md-1 btn btn-primary ">
               ADD
             </button>
-            <div className="">
-              <button type="button" className="btn btn-warning mr-2">
+            <div className="col-md-4">
+              <button type="button" className="col-md-5 btn btn-warning m-1">
                 Discard Payment
               </button>
               <button
                 type="button"
                 onClick={savePayments}
-                className="btn btn-success "
+                className="col-md-5 btn btn-success "
               >
                 Save Payments
               </button>
