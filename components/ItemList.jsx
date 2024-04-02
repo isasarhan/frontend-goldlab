@@ -7,17 +7,18 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const ItemList = ({ link, text, icon}) => {
+const ItemList = ({ link, text, icon }) => {
   return (
-    <ListItem>
-      <Link href={link} className="nav-link">
-        <ListItemButton>
-          <ListItemIcon>
-            {icon}
-          </ListItemIcon>
+    <ListItem disablePadding sx={{ display: "block" }}>
+      <ListItemButton sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }} LinkComponent={Link} to={link}>
+       
+          <ListItemIcon>{icon}</ListItemIcon>
           <ListItemText primary={text} />
-        </ListItemButton>
-      </Link>
+      </ListItemButton>
     </ListItem>
   );
 };

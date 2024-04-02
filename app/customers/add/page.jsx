@@ -68,7 +68,7 @@ function AddCustomer() {
   return (
     <>
       <Banner title="New Customer" />
-      <div className="container-md">
+      <div className="container-md"> 
         <div className="wrapper p-4">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">

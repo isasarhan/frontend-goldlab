@@ -22,7 +22,6 @@ const schema = yup
       .number()
       .typeError("should be number")
       .required()
-      .positive()
       .default(0),
     perGram: yup.number().typeError("should be number"),
     perItem: yup.number().typeError("should be number"),
@@ -85,7 +84,7 @@ const Orders = () => {
   }, [submitted]);
 
   const saveOrders = async () => {
-    const orderResult = await Promise.all(
+    const orderResult = await Promise.all( 
       orders.map(async (order) => {
         return (await addOrder(order)).data;
       })
@@ -268,18 +267,20 @@ const Orders = () => {
             </div>
           </div>
 
-          <div className="row justify-content-between m-3">
-            <button type="submit" className="col-md-1 btn btn-primary ">
-              ADD
-            </button>
+          <div className="row justify-content-between ">
+          <div className="col-md-1  ">
+              <button type="submit" className="btn btn-primary px-5">
+                ADD
+              </button>
+            </div>
             <div className="col-md-4">
-              <button type="button" className="col-md-5 btn btn-warning m-1">
+              <button type="button" className=" btn btn-warning m-1">
                 Discard Invoice
               </button>
               <button
                 type="button"
                 onClick={saveOrders}
-                className="col-md-5 btn btn-success "
+                className=" btn btn-success "
               >
                 Save Invoice
               </button>

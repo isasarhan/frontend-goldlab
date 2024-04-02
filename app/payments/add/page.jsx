@@ -9,15 +9,14 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addPayment } from "@/services/paymentServcices";
-import { getBalanceByCustomerID, updateBalance } from "@/services/balanceServices";
+import {
+  getBalanceByCustomerID,
+  updateBalance,
+} from "@/services/balanceServices";
 
 const schema = yup
   .object({
-    weight: yup
-      .number()
-      .typeError("should be number")
-      .required()
-      .default(0),
+    weight: yup.number().typeError("should be number").required().default(0),
     cash: yup.number().typeError("should be number"),
     karat: yup.number().typeError("should be number"),
   })
@@ -72,13 +71,14 @@ const PaymentPage = () => {
   const editPayment = () => {};
   const savePayments = async () => {
     var customerId;
-    var totalWeight=0;
-    let totalCash=0;
+    var totalWeight = 0;
+    let totalCash = 0;
 
     const paymentsResult = await Promise.all(
       payments.map(async (payment) => {
-        totalWeight = totalWeight + convertGoldToFinness(payment.weight, payment.karat);
-        totalCash += payment.cash
+        totalWeight =
+          totalWeight + convertGoldToFinness(payment.weight, payment.karat);
+        totalCash += payment.cash;
         customerId = payment.customerid;
         return (await addPayment(payment)).data;
       })
@@ -112,8 +112,8 @@ const PaymentPage = () => {
 
   const onSubmit = (data, event) => {
     event.preventDefault();
-    const errorD = errorValidation(data)
-    if(errorD) return
+    const errorD = errorValidation(data);
+    if (errorD) return;
 
     const newPayment = {
       customerid: data.customerId,
@@ -129,30 +129,30 @@ const PaymentPage = () => {
     setPayments(updatedPayment);
     setSubmitted(true);
   };
-  const errorValidation = (data)=>{
-    if(data.customerId === ""){
+  const errorValidation = (data) => {
+    if (data.customerId === "") {
       error.push("Choose a Customer");
       setTimeout(() => {
         setError([]);
       }, 3000);
-      return true
+      return true;
     }
     if (data.date === "") {
       error.push("Choose a date");
       setTimeout(() => {
         setError([]);
       }, 2000);
-      return true
+      return true;
     }
-    if(data.description === ""){
+    if (data.description === "") {
       error.push("Add description");
       setTimeout(() => {
         setError([]);
       }, 3000);
-      return true
+      return true;
     }
-    return false
-  }
+    return false;
+  };
   return (
     <div>
       <Banner title="Payment" />
@@ -192,7 +192,7 @@ const PaymentPage = () => {
                 register={register}
               />
               <p>{errors.weight?.message}</p>
-            </div> 
+            </div>
             <div className="col-md-4 ">
               <InputField
                 type="text"
@@ -239,9 +239,11 @@ const PaymentPage = () => {
           </div>
 
           <div className="row justify-content-between ">
-            <button type="submit" className="col-md-1 btn btn-primary ">
-              ADD
-            </button>
+            <div className="col-md-1  ">
+              <button type="submit" className="btn btn-primary px-5">
+                ADD
+              </button>
+            </div>
             <div className="col-md-4">
               <button type="button" className="col-md-5 btn btn-warning m-1">
                 Discard Payment

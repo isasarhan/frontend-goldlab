@@ -1,10 +1,10 @@
 import { Inter } from "next/font/google";
-import Navbar from "@/components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Suspense } from "react";
 import "./globals.css";
 import Loading from "./loading";
 import Footer from "@/components/footer";
+import AdminDashboard from "@/components/admin";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,9 +17,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <main className={inter.className}>
-          <Navbar />
-          <Suspense fallback={<Loading />}>{children}</Suspense>
-          <Footer/>
+          <AdminDashboard>
+            <Suspense fallback={<Loading />}>{children}</Suspense>
+            {/* <Footer /> */}
+          </AdminDashboard>
         </main>
       </body>
     </html>

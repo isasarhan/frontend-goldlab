@@ -12,9 +12,9 @@ const TableBody = ({ columns, data, id }) => {
   return (
     <tbody>
       {data.map((item) => (
-        <tr key={keyGenerate()}>
+        <tr key={keyGenerate()} >
           {columns.map((column) => (
-            <td scope="row" key={column.key}>
+            <td scope="row" key={column.key} className="p-3">
               {renderCell(item, column)}
             </td>
           ))}

@@ -2,10 +2,10 @@ import React from "react";
 
 const TableHeader = ({ columns }) => {
   return (
-    <thead>
-      <tr>
+    <thead >
+      <tr >
         {columns.map((column) => (
-          <th scope="col" key={column.key}>
+          <th className="p-3" scope="col" key={column.key}>
             {column.label}
           </th>
         ))}

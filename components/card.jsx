@@ -5,8 +5,8 @@ import Link from "next/link";
 const CustomerCard = ({ name, id, location, email, phone }) => {
   return (
     <div>
-      <div className="card" style={{ width: "18em" }}>
-        <div className="card-header">
+      <div className="card rounded-5 p-2" style={{ width: "18em" }}>
+        <div className="p-3 ">
           <h5 className="card-title"> {name} </h5>
         </div>
         <ul className="list-group list-group-flush">

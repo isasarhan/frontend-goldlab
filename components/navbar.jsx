@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import OffCanvasMenu from "./offCanvas";
+import OffCanvasMenu from "./mainMenu";
+import NavItem from "./navItem";
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -36,20 +37,18 @@ const Navbar = () => {
 
   return (
     <div>
+      
       <nav className="navbar navbar-expand-lg bg-body-tertiary p-3">
         <div className="container-fluid">
-        <OffCanvasMenu/>
+          <OffCanvasMenu />
           <ul className="navbar-nav"></ul>
           <div
             className={`collapse navbar-collapse ${expanded ? "show" : ""}`}
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link href="/" className="nav-link active">
-                  Home
-                </Link>
-              </li>
+              <NavItem href="/" name={"Home"} />
+
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -61,45 +60,26 @@ const Navbar = () => {
                 </a>
 
                 <ul className={`dropdown-menu${isDropdownOpen ? " show" : ""}`}>
-                  <li>
+                  <li className="nav-item">
                     <Link href="/customers/add" className="dropdown-item">
                       New
                     </Link>
                   </li>
-                  <li>
+                  <li className="nav-item">
                     <Link href="/customers" className="dropdown-item">
                       View All
                     </Link>
                   </li>
                 </ul>
               </li>
-              <li className="nav-item">
-                <Link href="/invoices" className="nav-link active">
-                  All Invoices
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/invoices/add" className="nav-link active">
-                  New Invoice
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/balances/" className="nav-link active">
-                  View Balances
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/payments/add" className="nav-link active">
-                  New Payment
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/payments/" className="nav-link active">
-                  All Payment
-                </Link>
-              </li>
+              <NavItem href="/invoices" name={"All Invoices"} />
+              <NavItem href="/invoices/add" name={"New Invoice"} />
+              <NavItem href="/balances" name={"View Balances"} />
+              <NavItem href="/payments/add" name={"New Payment"} />
+              <NavItem href="/supply/add" name={"Add Supply"} />
+              <NavItem href="/supplier/add" name={"Add Supplier"} />
+              <NavItem href="/inventory" name={"Update Inventory"} />
             </ul>
-            
           </div>
           <Link href={`/users/${id}`} className="nav-link active p-2">
             <FaRegUserCircle onClick={getUser} size="25px" />

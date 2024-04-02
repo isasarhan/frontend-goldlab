@@ -12,6 +12,7 @@ const DateField = ({ name, label, register, defaultValue, ...rest }) => {
           type="date"
           id={name}
           {...register(name)}
+          {...rest}
         />
       </div>
     </div>

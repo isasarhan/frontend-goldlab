@@ -37,7 +37,6 @@ const Register = () => {
    
     
     await registerUser(formData).then((res) => {
-      console.log(res);
       setSuccess(true)
       setTimeout(() => {
         setSuccess(false);
@@ -49,7 +48,6 @@ const Register = () => {
   };
   const onSubmit = (data, event) => {
     event.preventDefault();
-    // console.log(data);
     postUser(data);
   };
   return (
@@ -58,7 +56,7 @@ const Register = () => {
       <div className="container-md">
       {success && (
             <div className="alert alert-success " role="alert">
-              Logged In Successfuly!
+              Registered Successfuly!
             </div>
           )}
         <div className="wrapper p-4">

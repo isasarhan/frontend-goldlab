@@ -9,12 +9,12 @@ const SelectField = ({ name, options = [], label, onChange,register, defaultValu
         {options &&
           options.map((option) => (
             <option value={option._id} key={"name" + option._id}>
-              {option.cname}
+              {option.cname? option.cname : option.name}
             </option>
           ))}
       </select>
     </div>
-  );
+  ); 
 };
 
 export default SelectField;
