@@ -16,6 +16,7 @@ import OffCanvasMenu from './mainMenu';
 import MainMenu from './mainMenu';
 import Link from 'next/link';
 import { FaRegUserCircle } from 'react-icons/fa';
+import Cookies from 'js-cookie';
 
 const drawerWidth = 240;
 
