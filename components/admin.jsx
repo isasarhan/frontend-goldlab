@@ -12,11 +12,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import OffCanvasMenu from './mainMenu';
 import MainMenu from './mainMenu';
 import Link from 'next/link';
 import { FaRegUserCircle } from 'react-icons/fa';
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const drawerWidth = 240;
 
@@ -70,6 +70,7 @@ export default function AdminDashboard({children}) {
   const [open, setOpen] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [id, setId] = React.useState();
+  const router = useRouter();
 
   const handleDrawerOpen = () => {
     setOpen(true);
