@@ -12,6 +12,7 @@ import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 
 import PasswordField from "@/components/form/passwordInput";
+import { Router } from "next/router";
 
 const schema = yup
   .object({
@@ -40,6 +41,8 @@ const Login = () => {
         setTimeout(() => {
           setSuccess(false);
           router.push("/");
+          Router.refresh();
+
         }, 2000);
 
       } catch (error) {

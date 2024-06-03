@@ -1,12 +1,15 @@
-
 .custom-cursor:hover {
-    cursor: pointer; 
-  }
-  .btn-primary {
-    background-color: #0177B6;
-    border-color: #26547C;
+  cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  
+.btn-primary {
+  background-color: #0177B6 !important;
+  border-color: #0177B6 !important;
 }
+
+.bg-common {
+  background: #06689d !important;
+  color: white ;
+}
+
+@media (max-width: 768px) {}

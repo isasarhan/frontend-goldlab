@@ -6,8 +6,9 @@ import Cookies from 'js-cookie'
 import MenuIcon from '@mui/icons-material/Menu';
 import { FaRegUserCircle } from 'react-icons/fa'
 import './dashboard.css'
-import { IconButton } from '@mui/material'
+import { ClickAwayListener, IconButton } from '@mui/material'
 import useWindowWidth from '@/hooks/useWindowWidth'
+import { Router } from 'next/router'
 const Dashboard = ({ children }) => {
     const [showCanvas, setShowCanvas] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,59 +18,74 @@ const Dashboard = ({ children }) => {
     const logout = () => {
         setIsLoggedIn(false);
         Cookies.remove("currentUser");
-        router.refresh();
+        Router.push("/");
+        Router.refresh();
     };
     const getUser = () => {
         const user = JSON.parse(Cookies.get("currentUser")).data;
-        setId(user.id);
+        if (user)
+            setId(user.id);
     };
     const toggleShowCnavas = () => {
         setShowCanvas(!showCanvas)
     }
-
+    useEffect(() => {
+        if (Cookies.get("currentUser")) {
+            const user = JSON.parse(Cookies.get("currentUser")).data;
+            setIsLoggedIn(true)
+        }
+    }, [isLoggedIn])
     return (
-        <div className='mainDashboard'>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <div className='d-flex align-items-center pt-2 pb-2' >
-                        <button className="navbar-toggler me-2" type="button" onClick={toggleShowCnavas} data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        {width < 768 ? <Link className='navbar-brand' href={'/'}>GOLD LAB MANAGEMENT SYSTEM</Link> : ''}
-                    </div>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav w-100  align-items-center">
-                            <IconButton onClick={toggleShowCnavas}>
-                                <MenuIcon />
-                            </IconButton>
-                            <Link className='navbar-brand' href={'/'}>GOLD LAB MANAGEMENT SYSTEM</Link>
+        <div className='mainDashboard '>
 
-                            <div className="d-flex  align-items-center w-100 ">
-                                <div className='ms-auto d-flex align-items-center'>
-                                    <Link href={`/users/${id}`} className="nav-link active p-2">
-                                        <FaRegUserCircle onClick={getUser} size="25px" />
-                                    </Link>
-                                    <button className="btn btn-dark ">
-                                        <Link href="/auth/register" >
-                                            Register
+            <nav className="navbar navbar-expand-lg bg-body-tertiary bg-common">
+                <ClickAwayListener
+                    onClickAway={() => {
+                        setShowCanvas(false);
+                    }}
+                >
+                    <div className="container-fluid">
+                        <div className='d-flex align-items-center pt-2 pb-2' >
+                            <button className="navbar-toggler me-2" type="button" onClick={toggleShowCnavas} data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            {width < 768 ? <Link className='navbar-brand' href={'/'}>GOLD LAB MANAGEMENT SYSTEM</Link> : ''}
+                        </div>
+                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div className="navbar-nav w-100  align-items-center">
+                                <IconButton onClick={toggleShowCnavas}>
+                                    <MenuIcon />
+                                </IconButton>
+                                <Link className='navbar-brand text-white' href={'/'}>GOLD LAB MANAGEMENT SYSTEM</Link>
+
+                                <div className="d-flex  align-items-center w-100 ">
+                                    <div className='ms-auto d-flex align-items-center'>
+                                        <Link href={`/users/${id}`} className="nav-link active p-2">
+                                            <FaRegUserCircle onClick={getUser} size="25px" color='white'/>
                                         </Link>
-                                    </button>
-                                    <button className="btn btn-danger " onClick={logout}>
-                                        Logout
-                                    </button>
-                                    <button className="btn btn-success ">
-                                        <Link href="/auth/login" >
-                                            Sign In
-                                        </Link>
-                                    </button>
+                                        <button className="btn btn-dark ">
+                                            <Link href="/auth/register" >
+                                                Register
+                                            </Link>
+                                        </button>
+                                        {isLoggedIn ? <button className="btn btn-danger " onClick={logout}>
+                                            Logout
+                                        </button> :
+                                            <button className="btn btn-success ">
+                                                <Link href="/auth/login" >
+                                                    Sign In
+                                                </Link>
+                                            </button>
+                                        }
+                                    </div>
+
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                </div>
+                </ClickAwayListener>
             </nav>
             <div className={`offcanvas offcanvas-start w-auto  ${showCanvas ? 'show' : ''}`} tabIndex="-1"
                 id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">

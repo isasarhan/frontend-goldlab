@@ -1,5 +1,4 @@
 "use client";
-
 import InfoCard from "@/components/admin/infoCard";
 import { getCustomers } from "@/services/customerServices";
 import { getSuppliers } from "@/services/supplierServices";
