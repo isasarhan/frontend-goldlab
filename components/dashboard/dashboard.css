@@ -1,0 +1,11 @@
+.mainDashboard .btn {
+    padding: 10px 15px !important;
+    margin-right: 10px;
+}
+.mainDashboard .btn a{
+    text-decoration: none;
+    color: white;
+}
+.offcanvas{
+    transition: all 0.3s ease-in-out !important;
+}

@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const CustomerCard = ({ name, id, location, email, phone }) => {
   return (
-    <div>
-      <div className="card rounded-5 p-2" style={{ width: "18em" }}>
+    
+      <div className="card rounded-5 p-2">
         <div className="p-3 ">
           <h5 className="card-title"> {name} </h5>
         </div>
@@ -41,7 +41,6 @@ const CustomerCard = ({ name, id, location, email, phone }) => {
           </Link>
         </div>
       </div>
-    </div>
   );
 };
 

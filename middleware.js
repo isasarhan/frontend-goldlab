@@ -1,6 +1,5 @@
 export function middleware(request) {
     const currentUser = request.cookies.get('currentUser')?.value
-    console.log(request);
     
     if (currentUser && !request.nextUrl.pathname.startsWith('/')) {
       return Response.redirect(new URL('/', request.url))

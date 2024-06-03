@@ -1,0 +1,34 @@
+/* Base table styles */
+.table-container {
+    width: 100%;
+    overflow-x: auto !important; /* Allows horizontal scrolling */
+    -webkit-overflow-scrolling: touch !important; /* Enables smooth scrolling on touch devices */
+  }
+  
+  .responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ensure table has a minimum width */
+  }
+  
+  .responsive-table th, .responsive-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .responsive-table thead {
+    background-color: #f4f4f4;
+  }
+  
+  .responsive-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+    .responsive-table {
+      width: 100%; /* Make sure the table fits the screen */
+    }
+  }
+  

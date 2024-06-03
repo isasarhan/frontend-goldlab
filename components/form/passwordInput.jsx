@@ -16,7 +16,7 @@ const PasswordField = ({
         {label}
       </label>
 
-      <div class="input-group mb-3">
+      <div className="input-group mb-3">
         <input
           {...rest}
           type={type}

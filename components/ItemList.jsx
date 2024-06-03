@@ -7,7 +7,7 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const ItemList = ({ link, text, icon }) => {
+const ItemList = ({ link, text, icon, open }) => {
   return (
     <ListItem disablePadding sx={{ display: "block" }}>
       <ListItemButton sx={{

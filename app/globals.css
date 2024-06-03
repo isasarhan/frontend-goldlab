@@ -2,8 +2,11 @@
 .custom-cursor:hover {
     cursor: pointer; 
   }
-
   .btn-primary {
     background-color: #0177B6;
     border-color: #26547C;
+}
+
+@media (max-width: 768px) {
+  
 }

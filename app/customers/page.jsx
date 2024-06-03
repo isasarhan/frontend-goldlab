@@ -48,8 +48,8 @@ const Customers = () => {
   return (
     <>
       <Banner title="All Customers" />
-      <div className="container-md">
-        <div className="wrapper">
+      <div className="container">
+        <div className="">
           <div className="d-flex justify-content-between">
             <div></div>
             <button
@@ -59,7 +59,7 @@ const Customers = () => {
               {<IoMdRefresh />}
             </button>
           </div>
-          <div className="row  ">
+          <div className="row ">
             {filteredCustomers.map((item) => (
               <div key={item._id} className="col-md-3 p-3">
                 <CustomerCard

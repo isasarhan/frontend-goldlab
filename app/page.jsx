@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { FaDollarSign, FaUsers } from "react-icons/fa6";
 import { GoPackage } from "react-icons/go";
 import { AiFillGold } from "react-icons/ai";
+
 import Table from "@/components/table";
 
 export default function Home() {
@@ -24,7 +25,6 @@ export default function Home() {
   const retreiveData = async () => {
     const cus = await getCustomers();
     if (cus) setCustomers(cus);
-
     const sup = await getSuppliers();
     if (sup) setSuppliers(sup.length);
 
@@ -123,7 +123,7 @@ export default function Home() {
           </div>
         </div>
         <br />
-        <div className="row p-3">
+        <div className="row p-md-3">
           <div className="col-md-8">
             <Table columns={columns} data={customers}/>
           </div>

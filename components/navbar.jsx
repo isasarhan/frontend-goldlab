@@ -89,17 +89,17 @@ const Navbar = () => {
               Register
             </Link>
           </button>
-          {isLoggedIn ? (
+          
             <button className="btn btn-danger md-2" onClick={logout}>
               Logout
             </button>
-          ) : (
+          
             <button className="btn btn-success md-2">
               <Link href="/auth/login" className="nav-link ">
                 Sign In
               </Link>
             </button>
-          )}
+          
         </div>
       </nav>
     </div>

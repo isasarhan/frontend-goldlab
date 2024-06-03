@@ -96,7 +96,7 @@ const Register = () => {
                 </div>
                 <div className="mb-3">
                   <div className="mb-3">
-                    <label className="form-label" for="customFile">
+                    <label className="form-label" htmlFor="customFile">
                       Profile Image
                     </label>
                     <input
@@ -113,7 +113,7 @@ const Register = () => {
                     <option value="false">False</option>
                   </select>
                 </div>
-                <div class="d-grid gap-2">
+                <div className="d-grid gap-2">
                   <button className="btn btn-primary" type="submit">
                     Submit
                   </button>
