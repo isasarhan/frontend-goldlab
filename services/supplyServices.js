@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:4000/api/supply/";
+const baseURL = "https://gold-lab-backend.onrender.com/api/supply/";
 // const baseURL :"https://gold-lab-backend.onrender.com/api/auth/",
 
 export const addSupply = async (supply) => {
@@ -15,7 +15,7 @@ export const addSupply = async (supply) => {
 };
 export const getSuppliesByDates = async (input) => {
   return await axios
-    .get(`http://localhost:4000/api/supply/dates`, { params: input })
+    .get(`https://gold-lab-backend.onrender.com/api/supply/dates`, { params: input })
     .then((res) => {
       return res.data;
     })

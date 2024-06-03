@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const mainURL = "http://localhost:4000/api/inventory/main/";
-const baseURL = "http://localhost:4000/api/inventory/";
+const mainURL = "https://gold-lab-backend.onrender.com/api/inventory/main/";
 
 export const getMainInventory = async () => {
   return await axios
@@ -25,7 +24,7 @@ export const updateMainInventory = async (inventory) => {
 };
 export const updateInventory = async (inventory) => {
   return await axios
-    .put(baseURL, inventory)
+    .put(mainURL, inventory)
     .then((data) => {
       return data.data;
     })

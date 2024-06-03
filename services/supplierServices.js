@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:4000/api/supplier/";
+const baseURL = "https://gold-lab-backend.onrender.com/api/supplier/";
 //const  baseURL :"https://gold-lab-backend.onrender.com/api/auth/",
 
 export const addSupplier = async (supplier) => {
