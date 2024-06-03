@@ -52,7 +52,7 @@ const Dashboard = ({ children }) => {
                                 aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-                            {width < 768 ? <Link className='navbar-brand' href={'/'}>GOLD LAB MANAGEMENT SYSTEM</Link> : ''}
+                            {width < 768 ? <Link className='navbar-brand ' href={'/'}>GOLD LAB MANAGEMENT SYSTEM</Link> : ''}
                         </div>
                         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div className="navbar-nav w-100  align-items-center">
