@@ -16,17 +16,17 @@ const PasswordField = ({
         {label}
       </label>
 
-      <div className="input-group mb-3">
+      <div className="input-group mb-3 ">
         <input
           {...rest}
           type={type}
           id={name}
           defaultValue={defaultValue}
           {...register(name, (defaultValue = { defaultValue }))}
-          className="form-control"
+          className="form-control "
           aria-label={label}
         />
-        <a className="input-group-text btn btn-primary" type="button" htmlFor={name} onClick={onShowPassword}>
+        <a className="overflow-hidden input-group-text btn btn-primary " type="button" htmlFor={name} onClick={onShowPassword}>
           {icon}
         </a>
       </div>

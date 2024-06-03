@@ -66,23 +66,21 @@ const Register = () => {
             <div className="card p-md-5 p-3">
 
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
+                
                   <InputField
                     type="text"
                     label="Username"
                     name="username"
                     register={register}
                   />
-                </div>
-                <div>
+               
                   <InputField
                     type="text"
                     label="Email"
                     name="email"
                     register={register}
                   />
-                </div>
-                <div>
+              
                   <PasswordField
                     type={showPassword ? "text" : "password"}
                     label="Password"
@@ -93,7 +91,7 @@ const Register = () => {
                       setShowPassword(!showPassword);
                     }}
                   />
-                </div>
+                
                 <div className="mb-3">
                   <div className="mb-3">
                     <label className="form-label" htmlFor="customFile">

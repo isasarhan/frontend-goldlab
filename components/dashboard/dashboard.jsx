@@ -8,18 +8,18 @@ import { FaRegUserCircle } from 'react-icons/fa'
 import './dashboard.css'
 import { ClickAwayListener, IconButton } from '@mui/material'
 import useWindowWidth from '@/hooks/useWindowWidth'
-import { Router } from 'next/router'
+import { useRouter } from "next/navigation";
 const Dashboard = ({ children }) => {
     const [showCanvas, setShowCanvas] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [id, setId] = useState();
     const width = useWindowWidth()
-
+    const router = useRouter()
     const logout = () => {
-        setIsLoggedIn(false);
         Cookies.remove("currentUser");
-        Router.push("/");
-        Router.refresh();
+        setIsLoggedIn(false);
+        router.push("/auth/login");
+        router.refresh();
     };
     const getUser = () => {
         const user = JSON.parse(Cookies.get("currentUser")).data;
@@ -32,9 +32,10 @@ const Dashboard = ({ children }) => {
     useEffect(() => {
         if (Cookies.get("currentUser")) {
             const user = JSON.parse(Cookies.get("currentUser")).data;
+            setId(user.id);
             setIsLoggedIn(true)
         }
-    }, [isLoggedIn])
+    }, [isLoggedIn, router.pathname])
     return (
         <div className='mainDashboard '>
 
@@ -63,7 +64,7 @@ const Dashboard = ({ children }) => {
                                 <div className="d-flex  align-items-center w-100 ">
                                     <div className='ms-auto d-flex align-items-center'>
                                         <Link href={`/users/${id}`} className="nav-link active p-2">
-                                            <FaRegUserCircle onClick={getUser} size="25px" color='white'/>
+                                            <FaRegUserCircle onClick={getUser} size="25px" color='white' />
                                         </Link>
                                         <button className="btn btn-dark ">
                                             <Link href="/auth/register" >
