@@ -7,11 +7,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { FaRegUserCircle } from 'react-icons/fa'
 import './dashboard.css'
 import { IconButton } from '@mui/material'
+import useWindowWidth from '@/hooks/useWindowWidth'
 const Dashboard = ({ children }) => {
     const [showCanvas, setShowCanvas] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [id, setId] = useState();
-    const [width, setWidth] = useState(window.innerWidth);
+    const width = useWindowWidth()
 
     const logout = () => {
         setIsLoggedIn(false);
@@ -31,12 +32,12 @@ const Dashboard = ({ children }) => {
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <div className='d-flex align-items-center pt-2 pb-2' >
-                    <button className="navbar-toggler me-2" type="button" onClick={toggleShowCnavas} data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    {width < 768 ? <Link className='navbar-brand' href={'/'}>GOLD LAB MANAGEMENT SYSTEM</Link> : ''}
+                        <button className="navbar-toggler me-2" type="button" onClick={toggleShowCnavas} data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        {width < 768 ? <Link className='navbar-brand' href={'/'}>GOLD LAB MANAGEMENT SYSTEM</Link> : ''}
                     </div>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav w-100  align-items-center">
